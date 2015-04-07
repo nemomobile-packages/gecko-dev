@@ -24,6 +24,7 @@ Patch13:    Disallow-image-locking-no-matter-what.patch
 Patch14:    Notify-UI-about-change-in-composition-bounds-jb17999.patch
 Patch15:    cairo-limit-surface-area-rather-than-width-and-height.patch
 Patch16:    0001-xulrunner-Enable-external-window-usage.patch
+Patch17:    0001-xulrunner-Change-glClear-color-to-white.patch
 
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -91,6 +92,7 @@ Tests and misc files for xulrunner
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
 
 %build
 export DONT_POPULATE_VIRTUALENV=1
