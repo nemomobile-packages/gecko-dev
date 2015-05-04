@@ -1,0 +1,25 @@
+From 5c8a983fa5a9de2cd498985f48821ae82f16a13b Mon Sep 17 00:00:00 2001
+From: Raine Makelainen <raine.makelainen@jollamobile.com>
+Date: Tue, 7 Apr 2015 11:30:22 +0300
+Subject: [PATCH 1/3] [xulrunner] Change glClear color to white
+
+---
+ gfx/layers/opengl/CompositorOGL.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gfx/layers/opengl/CompositorOGL.cpp b/gfx/layers/opengl/CompositorOGL.cpp
+index 11e6890..6ecb9d8 100644
+--- a/gfx/layers/opengl/CompositorOGL.cpp
++++ b/gfx/layers/opengl/CompositorOGL.cpp
+@@ -735,7 +735,7 @@ CompositorOGL::BeginFrame(const nsIntRegion& aInvalidRegion,
+   // DrawWindowUnderlay. Make sure the bits used here match up with those used
+   // in mobile/android/base/gfx/LayerRenderer.java
+ #ifndef MOZ_ANDROID_OMTC
+-  mGLContext->fClearColor(0.0, 0.0, 0.0, 0.0);
++  mGLContext->fClearColor(1.0, 1.0, 1.0, 0.0);
+   mGLContext->fClear(LOCAL_GL_COLOR_BUFFER_BIT | LOCAL_GL_DEPTH_BUFFER_BIT);
+ #endif
+ }
+-- 
+1.9.1
+
