@@ -416,7 +416,13 @@ GLContextEGL::IsCurrent() {
 bool
 GLContextEGL::RenewSurface() {
     if (!mOwnsContext) {
+#ifdef MOZ_WIDGET_QT
+        mSurface = sEGLLibrary.fGetCurrentSurface(LOCAL_EGL_DRAW);
+        MOZ_ASSERT(mSurface != EGL_NO_SURFACE);
+        return MakeCurrent(true);
+#else
         return false;
+#endif
     }
 #ifndef MOZ_WIDGET_ANDROID
     MOZ_CRASH("unimplemented");
