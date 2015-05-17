@@ -1392,7 +1392,7 @@ CompositorOGL::CopyToTarget(DrawTarget *aTarget, const gfx::Matrix& aTransform)
 void
 CompositorOGL::Pause()
 {
-#ifdef MOZ_WIDGET_ANDROID
+#if defined(MOZ_WIDGET_ANDROID) || defined(MOZ_WIDGET_QT)
   if (!gl() || gl()->IsDestroyed())
     return;
 
@@ -1404,7 +1404,7 @@ CompositorOGL::Pause()
 bool
 CompositorOGL::Resume()
 {
-#ifdef MOZ_WIDGET_ANDROID
+#if defined(MOZ_WIDGET_ANDROID) || defined(MOZ_WIDGET_QT)
   if (!gl() || gl()->IsDestroyed())
     return false;
 
