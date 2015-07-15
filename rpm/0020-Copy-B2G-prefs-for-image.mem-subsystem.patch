@@ -1,0 +1,29 @@
+From 2bc949310139838f495b1846900cd37891e93f33 Mon Sep 17 00:00:00 2001
+From: Dmitry Rozhkov <dmitry.rozhkov@jolla.com>
+Date: Wed, 15 Jul 2015 18:35:34 +0300
+Subject: [PATCH 20/20] Copy B2G prefs for image.mem subsystem
+
+---
+ embedding/embedlite/embedding.js | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/embedding/embedlite/embedding.js b/embedding/embedlite/embedding.js
+index 2218210..9630598 100644
+--- a/embedding/embedlite/embedding.js
++++ b/embedding/embedlite/embedding.js
+@@ -277,7 +277,11 @@ pref("media.preload.auto", 2);    // preload metadata if preload=auto
+ // optimize images memory usage
+ pref("image.mem.decodeondraw", true);
+ pref("image.mem.allow_locking_in_content_processes", false);
+-pref("image.mem.min_discard_timeout_ms", 10000);
++// Copied from B2G
++pref("image.mem.min_discard_timeout_ms", 86400000); /* 24h, we rely on the out of memory hook */
++pref("image.mem.max_decoded_image_kb", 30000); /* 30MB seems reasonable */
++pref("image.mem.hard_limit_decoded_image_kb", 66560);
++
+ pref("image.onload.decode.limit", 24); /* don't decode more than 24 images eagerly */
+ 
+ // SimplePush
+-- 
+1.9.1
+
