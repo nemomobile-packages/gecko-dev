@@ -2473,11 +2473,6 @@ ScrollFrameHelper::BuildDisplayList(nsDisplayListBuilder*   aBuilder,
     bool addScrollBars = mIsRoot &&
       nsLayoutUtils::GetDisplayPort(mOuter->GetContent()) &&
       !aBuilder->IsForEventDelivery();
-    // For now, don't add them for display root documents, cause we've never
-    // had them there.
-    if (aBuilder->RootReferenceFrame()->PresContext() == mOuter->PresContext()) {
-      addScrollBars = false;
-    }
 
     if (addScrollBars) {
       // Add classic scrollbars.
@@ -2491,7 +2486,7 @@ ScrollFrameHelper::BuildDisplayList(nsDisplayListBuilder*   aBuilder,
     mOuter->BuildDisplayListForChild(aBuilder, mScrolledFrame,
                                      aDirtyRect, aLists);
 
-#ifdef MOZ_WIDGET_GONK
+#if defined(MOZ_WIDGET_GONK) || defined(MOZ_WIDGET_QT)
     // TODO: only layerize the overlay scrollbars if this scrollframe can be
     // panned asynchronously. For now just always layerize on B2G because.
     // that's where we want the layerized scrollbars
@@ -2701,7 +2696,7 @@ ScrollFrameHelper::BuildDisplayList(nsDisplayListBuilder*   aBuilder,
     scrolledContent.BorderBackground()->AppendNewToBottom(layerItem);
   }
   // Now display overlay scrollbars and the resizer, if we have one.
-#ifdef MOZ_WIDGET_GONK
+#if defined(MOZ_WIDGET_GONK) || defined(MOZ_WIDGET_QT)
   // TODO: only layerize the overlay scrollbars if this scrollframe can be
   // panned asynchronously. For now just always layerize on B2G because.
   // that's where we want the layerized scrollbars
