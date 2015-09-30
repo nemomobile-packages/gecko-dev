@@ -395,7 +395,7 @@ public:
 
   void Release();
 
-  void DiscardBackBuffers();
+  void DiscardBuffers();
 
   const CSSToParentLayerScale& GetFrameResolution() { return mFrameResolution; }
 
