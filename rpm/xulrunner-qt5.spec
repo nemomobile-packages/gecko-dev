@@ -44,6 +44,7 @@ Patch16:    0016-Implement-support-for-Pausing-Resuming-OpenGL-compos.patch
 Patch17:    0017-Add-Intel-Bay-Trail-GL-specific-workarounds.-JB-2967.patch
 Patch18:    0018-Make-TextureImageEGL-hold-a-reference-to-GLContext.-.patch
 Patch19:    0019-Limit-maximum-scale-to-4x.-Fixes-JB-25377.patch
+Patch20     0020-Copy-B2G-prefs-for-image.mem-subsystem.patch
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(pango)
@@ -114,6 +115,7 @@ Tests and misc files for xulrunner
 %patch17 -p1
 %patch18 -p1
 %patch19 -p1
+%patch20 -p1
 
 %build
 export DONT_POPULATE_VIRTUALENV=1
